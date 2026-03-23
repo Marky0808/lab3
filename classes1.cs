@@ -39,6 +39,32 @@ public class Student
     {
         get { return averageGrade; }
     }
+    
+    public void IncreaseGrade(double value)
+    {
+        if (value > 0)
+        {
+            averageGrade += value;
+            if (averageGrade > 100)
+                averageGrade = 100;
+        }
+    }
+    
+    public bool HasScholarship()
+    {
+        return averageGrade >= 90;
+    }
+    
+    public static int GetStudentCount()
+    {
+        return studentCount;
+    }
+    
+    public override string ToString()
+    {
+        return $"ID: {studentId}, Name: {name}, Average: {averageGrade}";
+    }
+}
 
     class Program
     {
@@ -49,5 +75,3 @@ public class Student
             Student s3 = new Student(3, "Patrick", "95");
         }
     }
-    
-}
