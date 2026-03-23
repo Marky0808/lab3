@@ -17,13 +17,36 @@ public class Student
     private string name;
     private double avarageGrade;
 
+    public static int studentCount = 0;
+    
+    public Student(int id, string name, double grade)
+    {
+        this.studentId = id;
+        this.name = name;
+        this.averageGrade = Math.Min(grade, 100);
+        studentCount++;
+    }
+    
+    public Student(int id, string name)
+    {
+        this.studentId = id;
+        this.name = name;
+        this.averageGrade = 0;
+        studentCount++;
+    }
+    
+    public double AverageGrade
+    {
+        get { return averageGrade; }
+    }
+
     class Program
     {
         static void Main()
         {
-            Student s1 = new Student();
-            Student s2 = new Student();
-            Student s3 = new Student();
+            Student s1 = new Student(1, "John", "85");
+            Student s2 = new Student(2, "Jane");
+            Student s3 = new Student(3, "Patrick", "95");
         }
     }
     
