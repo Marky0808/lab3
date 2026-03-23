@@ -90,6 +90,14 @@ public class Student
 
         File.WriteAllText(filePath, json);
     }
+    
+    public static Student LoadFromJson(string filePath)
+    {
+        string json = File.ReadAllText(filePath);
+        StudentDTO dto = JsonSerializer.Deserialize<StudentDTO>(json);
+
+        return new Student(dto.Id, dto.Name, dto.Grade);
+    }
 }
 
     class Program
@@ -97,8 +105,6 @@ public class Student
         static void Main()
         {
             Student s1 = new Student(1, "John", 85);
-            Student s2 = new Student(2, "Jane");
-            Student s3 = new Student(3, "Patrick", 95);
             
             s1.IncreaseGrade(10);
             s2.IncreaseGrade(92);
