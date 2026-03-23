@@ -1,4 +1,6 @@
 namespace Lab3;
+using System.IO;
+using System.Text.Json;
 
 
 // 3. Студент. Університет зберігає інформацію про студентів:
@@ -64,6 +66,23 @@ public class Student
     {
         return $"ID: {studentId}, Name: {name}, Average: {averageGrade}";
     }
+    
+    private class StudentDTO
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Grade { get; set; }
+    }
+    
+    public void SaveToJson(string filePath)
+    {
+        StudentDTO dto = new StudentDTO
+        {
+            Id = this.studentId,
+            Name = this.name,
+            Grade = this.averageGrade
+        };
+        
 }
 
     class Program
