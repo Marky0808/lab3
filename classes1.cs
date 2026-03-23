@@ -106,17 +106,20 @@ public class Student
         {
             Student s1 = new Student(1, "John", 85);
             
-            s1.IncreaseGrade(10);
-            s2.IncreaseGrade(92);
-        
-            Console.WriteLine(s1);
-            Console.WriteLine($"Стипендія: {s1.HasScholarship()}");
-            
-            Console.WriteLine(s2);
-            Console.WriteLine($"Стипендія: {s2.HasScholarship()}");
+            string path = "student.json";
+            s1.SaveToJson(path);
 
-            Console.WriteLine(s3);
-            Console.WriteLine($"Стипендія: {s3.HasScholarship()}");
+            Console.WriteLine("Студент збережений у файл.");
+        
+            Student loadedStudent = Student.LoadFromJson(path);
+
+            Console.WriteLine("Завантажений студент:");
+            Console.WriteLine(loadedStudent);
+            
+            loadedStudent.IncreaseGrade(5);
+            Console.WriteLine("Після підвищення балу:");
+            Console.WriteLine(loadedStudent);
+            Console.WriteLine($"Стипендія: {loadedStudent.HasScholarship()}");
             
             Console.WriteLine($"Загальна кількість студентів: {Student.GetStudentCount()}");
         }
