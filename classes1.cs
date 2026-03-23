@@ -83,6 +83,13 @@ public class Student
             Grade = this.averageGrade
         };
         
+        string json = JsonSerializer.Serialize(dto, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
+
+        File.WriteAllText(filePath, json);
+    }
 }
 
     class Program
