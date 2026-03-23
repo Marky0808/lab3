@@ -13,9 +13,9 @@ namespace Lab3;
 // У Main() створіть кілька студентів і протестуйте логіку.
 public class Student
 {
-    private readonly int studentID;
+    private readonly int studentId;
     private string name;
-    private double avarageGrade;
+    private double averageGrade;
 
     public static int studentCount = 0;
     
@@ -70,8 +70,23 @@ public class Student
     {
         static void Main()
         {
-            Student s1 = new Student(1, "John", "85");
+            Student s1 = new Student(1, "John", 85);
             Student s2 = new Student(2, "Jane");
-            Student s3 = new Student(3, "Patrick", "95");
+            Student s3 = new Student(3, "Patrick", 95);
+            
+            s1.IncreaseGrade(10);
+            s2.IncreaseGrade(92);
+        
+            Console.WriteLine(s1);
+            Console.WriteLine($"Стипендія: {s1.HasScholarship()}");
+            
+            Console.WriteLine(s2);
+            Console.WriteLine($"Стипендія: {s2.HasScholarship()}");
+
+            Console.WriteLine(s3);
+            Console.WriteLine($"Стипендія: {s3.HasScholarship()}");
+            
+            Console.WriteLine($"Загальна кількість студентів: {Student.GetStudentCount()}");
         }
     }
+    
